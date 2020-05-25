@@ -7,6 +7,18 @@
   pointer-events: none;
 }
 
+.dpb {
+  height: 50%;
+  width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+  .dpb {
+    height: 90%;
+    width: 90%;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

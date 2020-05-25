@@ -6,18 +6,21 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+        <img src={require("../src/dpb.png")} className="dpb" alt="logo" />
+        <p style={{fontSize: '25px'}}>
+          ওয়েবসাইটের কাজ চলছে...
         </p>
-        <a
+        <p style={{fontSize: '30px'}}>
+          প্লাজমা ডোনার এখনই পেতে ফেসবুক গ্রুপে জয়েন করুন
+        </p>  
+        {/* <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
       </header>
     </div>
   );
