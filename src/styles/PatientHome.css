@@ -1,0 +1,12 @@
+.about {
+    width: 75%;
+    padding-left: 250px;
+    padding-top: 50px;   
+}
+
+@media only screen and (max-width: 600px) {
+    .about {
+        width: 75%;
+        padding-left: 20px;
+    }
+}

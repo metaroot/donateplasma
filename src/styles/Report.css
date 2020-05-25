@@ -1,0 +1,143 @@
+.report-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.make-report-text {
+    display: flex;
+    width: 100%;
+    font-size: 30px;
+    padding-top: 20px;
+    align-self: center;
+    color: peru
+}
+
+.symptom-text-div {
+    display: flex;
+    padding-right: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.name {
+    display: flex;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.symptom-text {
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.symptom {
+    display: flex;
+    padding-top: 30px;
+}
+
+.duration-text-div {
+    display: flex;
+    padding-right: 20px;
+}
+
+.duration-text {
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.duration {
+    display: flex;
+    padding-left: 20px;
+}
+
+.medicine-text-div {
+    display: flex;
+    padding-right: 20px;
+}
+
+.medicine-text {
+    font-size: 20px;
+    padding-right: 10px
+}
+
+.buttons {
+    display: flex;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .report-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .make-report-text {
+        display: flex;
+        width: 100%;
+        font-size: 20px;
+        padding-top: 10px;
+        padding-left: 10px;
+        align-self: center;
+        color: peru
+    }
+
+    .symptom-text-div {
+        display: flex;
+        padding-bottom: 10px;
+        padding-left: 10px;
+    }
+    
+    .symptom-text {
+        font-size: 20px;
+    }
+    
+    .symptom {
+        display: flex;
+        flex-direction: column;
+        padding-top: 30px;
+    }
+
+    .duration-text-div {
+        display: flex;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    
+    .duration-text {
+        font-size: 20px;
+        padding-right: 10px;
+    }
+
+    .medicine-text-div {
+        display: flex;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .medicine-text {
+        font-size: 20px;
+        padding-right: 10px;
+    }
+
+    .delete-symp {
+        width: 50px;
+        padding-left: 20px;
+    }
+
+    .add-symp {
+        width: 50px;
+        padding-left: 20px;
+    }
+    
+
+}
