@@ -7,6 +7,8 @@ import { Select } from "@chakra-ui/core";
 import { IconButton } from "@chakra-ui/core";
 import { Tag, TagIcon, TagLabel, TagCloseButton } from "@chakra-ui/core";
 import { Radio, RadioGroup } from "@chakra-ui/core";
+import ImageUploader from 'react-images-upload';
+
 import {
     NumberInput,
     NumberInputField,
@@ -49,7 +51,6 @@ function ToastExample() {
 
 function Report() {
    
-
     const [entries, setEntries] = useState([]);
     const [symp, setSymp] = useState('');
     const [timeDuration, setTimeDuration] = useState(1);
@@ -94,7 +95,7 @@ function Report() {
             <Navbar/>
             <div className="make-report" style={{display: 'flex'}}>
                 {/* <img className="iron-man" style={{paddingTop: "35px", paddingBottom:"10px", paddingRight: "20px", width: "70px"}} src="https://media0.giphy.com/media/7OEje1TMS7hCw/giphy.gif?cid=ecf05e472714886e80a908d2ae926c16fbb807cf8733e41a&rid=giphy.gif"></img> */}
-                <p className="make-report-text">আপনার প্লাজমা দান করার জন্য নিচের তথ্যগুলো প্রদান করুন </p>
+                <p className="make-report-text">আপনার প্লাজমা দান করার জন্য নিচের তথ্যগুলো প্রদান করুন</p>
             </div>
 
             <div className="info">
@@ -138,11 +139,11 @@ function Report() {
                 <div className="name">
                     <p className="symptom-text">লিঙ্গ:</p>
                     <RadioGroup defaultValue="মহিলা" spacing={5} isInline>
-                        <Radio variantColor="green" value="পুরুষ">
-                            পুরুষ
-                        </Radio>
                         <Radio variantColor="green" value="মহিলা">
                             মহিলা
+                        </Radio>
+                        <Radio variantColor="green" value="পুরুষ">
+                            পুরুষ
                         </Radio>
                         <Radio variantColor="green" value="অন্যান্য">
                             অন্যান্য
@@ -176,7 +177,32 @@ function Report() {
                             টেস্ট করানো হয়নি
                         </Radio>
                     </RadioGroup>
-                </div>               
+                </div>
+                <div className="name">
+                    <p className="symptom-text">পজিটিভ রিপোর্টের ছবি:</p>
+                    <ImageUploader
+                        withIcon={true}
+                        buttonText='পজিটিভ টেস্টের টেক্সট মেসেজের অথবা রিপোর্টের ছবি'
+                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                        maxFileSize={5242880}
+                    />
+
+                </div>
+
+                <div className="name">
+                    <p className="symptom-text">নেগেটিভ রিপোর্টের ছবি:</p>
+                    <ImageUploader
+                        withIcon={true}
+                        buttonText='নেগেটিভ টেস্টের টেক্সট মেসেজের অথবা রিপোর্টের ছবি'
+                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                        maxFileSize={5242880}
+                    />
+                </div>            
+            </div>
+
+            <div className="make-report" style={{display: 'flex'}}>
+                {/* <img className="iron-man" style={{paddingTop: "35px", paddingBottom:"10px", paddingRight: "20px", width: "70px"}} src="https://media0.giphy.com/media/7OEje1TMS7hCw/giphy.gif?cid=ecf05e472714886e80a908d2ae926c16fbb807cf8733e41a&rid=giphy.gif"></img> */}
+                <p className="make-report-text">আপনি কোন শারীরিক অসুস্থতায় ভুগলে নিচে ইনপুট দিন</p>
             </div>
                 
             {entries ? (entries.map((entry) => (
@@ -264,7 +290,7 @@ function Report() {
                 <IconButton className="add-symp" icon="add" variantColor="yellow" onClick={submitSymp}/>
             </div>
             
-            <div className="buttons" style={{paddingTop: "20px"}}>
+            <div className="buttons" style={{paddingTop: "20px", paddingBottom: "40px"}}>
                 <div className="submit-button">
                     <Button
                         variantColor="yellow"
