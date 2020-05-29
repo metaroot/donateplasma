@@ -27,7 +27,7 @@ const Navbar = () => {
             </BreadcrumbItem>
 
             <BreadcrumbItem>
-                <BreadcrumbLink className="link" color="#5F370E" as={Link} to='/plasmainfo'>Plasma Info</BreadcrumbLink>
+                <BreadcrumbLink className="link" color="#5F370E" as={Link} to='/donors'>Find a donor</BreadcrumbLink>
             </BreadcrumbItem>
 
         </Breadcrumb>              
