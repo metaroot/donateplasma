@@ -53,6 +53,7 @@ function Report() {
     //Name, age, phone, fb, gender, address, positive and negative test date, antibody test result, images (+, -)
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
+    const [bloodGroup, setBloodGroup] = useState('');
     const [phone, setPhone] = useState('');
     const [fb, setFb] = useState('');
     const [gender, setGender] = useState('');
@@ -65,33 +66,27 @@ function Report() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const reportRef = firebase.database().ref('reports');
-        const nameRef = firebase.database().ref('name');
-        const ageRef = firebase.database().ref('age');
-        const phoneRef = firebase.database().ref('phone');
-        const fbRef = firebase.database().ref('fb');
-        const genderRef = firebase.database().ref('gender');
-        const addressRef = firebase.database().ref('address');
-        const positiveTestDateRef = firebase.database().ref('positiveTestDate');
-        const negativeTestDateRef = firebase.database().ref('negativeTestDate');
-        const antibodyTestResultRef = firebase.database().ref('antibodyTestResult');
-        const positiveReportRef = firebase.database().ref('positiveReport');
-        const negativeReportRef = firebase.database().ref('negativeReport');
 
-        nameRef.push(name);
-        ageRef.push(age);
-        phoneRef.push(phone);
-        fbRef.push(fb);
-        genderRef.push(gender);
-        addressRef.push(address);
-        positiveTestDateRef.push(positiveTestDate);
-        negativeTestDateRef.push(negativeTestDate);
-        antibodyTestResultRef.push(antibodyTestResult);
-        positiveReportRef.push(positivePic);
-        negativeReportRef.push(negativePic);
+        const donorRef = firebase.database().ref('donors');
+
+        let donor = {
+            name: name,
+            age: age,
+            bloodGroup: bloodGroup,
+            phone: phone,
+            fb: fb,
+            gender: gender,
+            address: address,
+            positiveTestDate: positiveTestDate,
+            negativeTestDate: negativeTestDate,
+            antibodyTestResult: antibodyTestResult,
+        }
+
+        donorRef.push(donor);
         
         setName('');
         setAge('');
+        setBloodGroup('');
         setPhone('');
         setFb('');
         setGender('');
@@ -144,6 +139,12 @@ function Report() {
                             <NumberDecrementStepper />
                         </NumberInputStepper>
                     </NumberInput>
+                </div>
+                <div className="name">
+                    <p className="symptom-text">রক্তের গ্রুপ:</p>
+                    <Input placeholder="রক্তের গ্রুপ:"
+                    onChange={e => setBloodGroup(e.target.value)}
+                    />
                 </div>
                 <div className="name">
                     <p className="symptom-text">ফোন নাম্বার:</p>
