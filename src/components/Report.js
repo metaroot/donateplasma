@@ -60,10 +60,6 @@ function Report() {
     const [positiveTestDate, setPositiveTestDate] = useState('');
     const [negativeTestDate, setNegativeTestDate] = useState('');
     const [antibodyTestResult, setAntibodyTestResult] = useState('');
-    const [entries, setEntries] = useState([]);
-    const [symp, setSymp] = useState('');
-    const [timeDuration, setTimeDuration] = useState(1);
-    const [prevMeds, setPrevMeds] = useState('');
     const [positivePic, setPositivePic] = useState([]);
     const [negativePic, setNegativePic] = useState([]);
 
@@ -82,7 +78,6 @@ function Report() {
         const positiveReportRef = firebase.database().ref('positiveReport');
         const negativeReportRef = firebase.database().ref('negativeReport');
 
-        reportRef.push(entries);
         nameRef.push(name);
         ageRef.push(age);
         phoneRef.push(phone);
@@ -95,7 +90,6 @@ function Report() {
         positiveReportRef.push(positivePic);
         negativeReportRef.push(negativePic);
         
-        setEntries([]);
         setName('');
         setAge('');
         setPhone('');
@@ -117,28 +111,7 @@ function Report() {
         setNegativePic(negativePic.concat(picture));
     }
 
-    const submitSymp = (e) => {
-        e.preventDefault();
-        const entry = {
-            symp: symp,
-            timeDuration: timeDuration,
-            prevMeds: prevMeds
-        }
-        let prevEntries = entries;
 
-        prevEntries.push(entry);
-        
-        setSymp('');
-        setTimeDuration('');
-        setPrevMeds('');
-        setEntries(prevEntries);     
-    }
-
-    const deleteSymp = (id) => {
-        let currentEntries = entries
-        currentEntries.splice(id, 1)
-        setEntries(currentEntries);
-    }
     
     return (
         <div className="report-form">
@@ -251,64 +224,6 @@ function Report() {
                         maxFileSize={5242880}
                     />
                 </div>            
-            </div>
-
-            <div className="make-report" style={{display: 'flex'}}>
-                {/* <img className="iron-man" style={{paddingTop: "35px", paddingBottom:"10px", paddingRight: "20px", width: "70px"}} src="https://media0.giphy.com/media/7OEje1TMS7hCw/giphy.gif?cid=ecf05e472714886e80a908d2ae926c16fbb807cf8733e41a&rid=giphy.gif"></img> */}
-                <p className="make-report-text">আপনি কোন শারীরিক অসুস্থতায় ভুগলে নিচে ইনপুট দিন</p>
-            </div>
-                
-            {entries ? (entries.map((entry) => (
-                <div className="symptom">
-                    <div className="symptom-text-div">
-                        <p className="symptom-text">রোগ:</p>
-                        <Tag variantColor="yellow">
-                            <TagLabel>{entry.symp}</TagLabel>
-                        </Tag>
-                    </div>
-                    
-                    <div className="duration-text-div">
-                        <p className="duration-text">সময়কাল:</p>
-                        <Tag variantColor="cyan">
-                            <TagLabel>{entry.timeDuration}</TagLabel>
-                        </Tag>
-                    </div>
-                    <div className="medicine-text-div">
-                        <p className="medicine-text">ওষুধ:</p>
-                        <Tag variantColor="green">
-                            <TagLabel>{entry.prevMeds}</TagLabel>
-                        </Tag>
-                    </div>
-                    <IconButton className="delete-symp" icon="delete" variantColor="yellow" onClick={() => deleteSymp(entries.indexOf(entry))} />
-                </div>    
-            ))) : (
-                <div />
-            )}
-
-            <div className="symptom">
-                <div className="symptom-text-div">
-                    <p className="symptom-text">রোগ:</p>
-                    <Input
-                    placeholder="রোগ"
-                    onChange={e => setSymp(e.target.value)}
-                    />
-                </div>
-                
-                <div className="duration-text-div">
-                    <p className="duration-text">সময়কাল:</p>
-                    <Input
-                    placeholder="কত সময় ধরে ভুগছেন"
-                    onChange={e => setTimeDuration(e.target.value)}
-                    />
-                </div>
-                <div className="medicine-text-div">
-                    <p className="medicine-text">ওষুধ:</p>
-                    <Input
-                    placeholder="পূর্বে সেবনকৃত ওষুধ"
-                    onChange={e => setPrevMeds(e.target.value)}
-                    />
-                </div>
-                <IconButton className="add-symp" icon="add" variantColor="yellow" onClick={submitSymp}/>
             </div>
             
             <div className="buttons" style={{paddingTop: "20px", paddingBottom: "40px"}}>
