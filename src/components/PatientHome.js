@@ -20,11 +20,11 @@ function Feature({ title, desc, ...rest }) {
   
 function StackEx() {
   return (
-    <div className="home-panel" style={{display: findByLabelText, }}>
-      {/* <Box className="about" size="xl">
-        <Image src={require("../../src/dpb.png")} alt="Donate Plasma" width="1000px" />
-      </Box> */}
-      <Stack className="about" spacing={4} variantColor="#FEFCBF">
+    <div className="home-panel" style={{display: 'flex'}}>
+      <Box className="about" paddingRight="40px" paddingTop="20px" paddingLeft="50px">
+        <Image src={require("../../src/dpb.png")} alt="Donate Plasma"/>
+      </Box>
+      <Stack className="description" spacing={4} variantColor="#FEFCBF">
         <Feature
           fontSize="25px"
           variantColor="#FEFCBF"
@@ -33,7 +33,7 @@ function StackEx() {
           আপনি করোনা থেকে সুস্থ হয়ে উঠলে প্লাজমা দান করুন, এতে হয়তো একটি মানুষের জীবন বাঁচবে। 
           সঙ্কটাপন্ন করোনা রোগীর জন্য প্লাজমা সংগ্রহ করতে পারেন। 
           Donate Plasma Bangladesh ফেইসবুক গ্রুপে জয়েন করুন। 
-          যোগাযোগ - 01705475919 , 01750970356 "
+          যোগাযোগ - 01799858262, 01968643921 "
         />
       </Stack>
     </div>
