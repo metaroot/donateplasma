@@ -27,7 +27,7 @@ function StackEx() {
           fontSize="25px"
           variantColor="#FEFCBF"
           title="সেবাটি সম্পর্কে"
-          desc={<Text>ডোনার পেতে কল করুন 01799858262, 01968643921 নম্বরে।<br/> এবং যোগ দিন আমাদের <a className="hyperlink" href="https://www.facebook.com/groups/242718390292629/">ফেসবুক পেজে</a></Text>}
+          desc={<Text>ডোনার পেতে কল করুন 01799858262, 01968643921 নম্বরে।<br/> এবং যোগ দিন আমাদের <a className="hyperlink" href="https://www.facebook.com/groups/242718390292629/">ফেসবুক গ্রুপে</a></Text>}
         />
       </Stack>
     </div>

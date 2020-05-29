@@ -51,6 +51,8 @@ function ToastExample() {
 
 function Report() {
     //Name, age, phone, fb, gender, address, positive and negative test date, antibody test result, images (+, -)
+    //Zilla list --->
+    //Blood group list
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
     const [bloodGroup, setBloodGroup] = useState('');
