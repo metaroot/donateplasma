@@ -10,6 +10,13 @@ import { Radio, RadioGroup } from "@chakra-ui/core";
 import ImageUploader from 'react-images-upload';
 
 import {
+    FormControl,
+    FormLabel,
+    FormErrorMessage,
+    FormHelperText,
+  } from "@chakra-ui/core";
+
+import {
     NumberInput,
     NumberInputField,
     NumberInputStepper,
@@ -53,6 +60,7 @@ function Report() {
     //Name, age, phone, fb, gender, address, positive and negative test date, antibody test result, images (+, -)
     //Zilla list --->
     //Blood group list
+    const toast = useToast();
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
     const [bloodGroup, setBloodGroup] = useState('');
@@ -97,6 +105,14 @@ function Report() {
         setPositiveTestDate('');
         setNegativeTestDate('');
         setAntibodyTestResult('');
+
+        toast({
+            title: "তথ্য জমা হয়েছে",
+            description: "আপনার ইনপুট আমাদের ডেটাবেইজে জমা হয়েছে। জীবন বাঁচাতে এগিয়ে আসার জন্য আপনার প্রতি আমাদের কৃতজ্ঞতা। কারো জীবন বাঁচাতে অবশ্যই আমরা আপনার সাথে যোগাযোগ করব।",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+        })
     }
  
     return (
@@ -107,12 +123,12 @@ function Report() {
             </div>
 
             <div className="info">
-                <div className="name">
+                <FormControl isRequired="true" className="name">
                     <p className="symptom-text">নাম:</p>
-                    <Input placeholder="নাম" isRequired
+                    <Input  placeholder="নাম"
                     onChange={e => setName(e.target.value)}
                     />
-                </div>
+                </FormControl>
 
                 <div className="name">
                     <p className="symptom-text">বয়স:</p>
@@ -282,12 +298,13 @@ function Report() {
             
             <div className="buttons" style={{paddingTop: "20px", paddingBottom: "40px"}}>
                 <div className="submit-button">
-                    <ToastExample
+                    <Button
                         variantColor="yellow"
                         onClick={handleSubmit}
                     >
                         প্রেরণ করুন
-                    </ToastExample>    
+                    </Button>
+                   
                 </div> 
             </div>       
         </div>
