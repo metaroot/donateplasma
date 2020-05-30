@@ -36,8 +36,8 @@ function ToastExample() {
         variantColor="yellow"
         onClick={() =>
           toast({
-            title: "রিপোর্ট জমা হয়েছে",
-            description: "অতিসত্বর একজন ইন্টার্ন কিংবা প্রফেশনাল ডাক্তার আপনার রিপোর্টটি দেখে দিবেন। সেটি ফিরে এলে আপনার নোটিফিকেশন ট্যাবে দেখতে পাবেন  ",
+            title: "তথ্য জমা হয়েছে",
+            description: "আপনার ইনপুট আমাদের ডেটাবেইজে জমা হয়েছে। জীবন বাঁচাতে এগিয়ে আসার জন্য আপনার প্রতি আমাদের কৃতজ্ঞতা। কারো জীবন বাঁচাতে অবশ্যই আমরা আপনার সাথে যোগাযোগ করব।",
             status: "success",
             duration: 9000,
             isClosable: true,
@@ -59,12 +59,11 @@ function Report() {
     const [phone, setPhone] = useState('');
     const [fb, setFb] = useState('');
     const [gender, setGender] = useState('');
+    const [district, setDistrict] = useState('');
     const [address, setAddress] = useState('');
     const [positiveTestDate, setPositiveTestDate] = useState('');
     const [negativeTestDate, setNegativeTestDate] = useState('');
     const [antibodyTestResult, setAntibodyTestResult] = useState('');
-    const [positivePic, setPositivePic] = useState([]);
-    const [negativePic, setNegativePic] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -78,6 +77,7 @@ function Report() {
             phone: phone,
             fb: fb,
             gender: gender,
+            district: district,
             address: address,
             positiveTestDate: positiveTestDate,
             negativeTestDate: negativeTestDate,
@@ -92,24 +92,13 @@ function Report() {
         setPhone('');
         setFb('');
         setGender('');
+        setDistrict('');
         setAddress('');
         setPositiveTestDate('');
         setNegativeTestDate('');
         setAntibodyTestResult('');
-        setPositivePic([]);
-        setNegativePic([]);
     }
-
-    const onPositiveDrop = (picture) => {
-        setPositivePic(positivePic.concat(picture));
-    }
-
-    const onNegativeDrop = (picture) => {
-        setNegativePic(negativePic.concat(picture));
-    }
-
-
-    
+ 
     return (
         <div className="report-form">
             <Navbar/>
@@ -120,7 +109,7 @@ function Report() {
             <div className="info">
                 <div className="name">
                     <p className="symptom-text">নাম:</p>
-                    <Input placeholder="নাম"
+                    <Input placeholder="নাম" isRequired
                     onChange={e => setName(e.target.value)}
                     />
                 </div>
@@ -144,9 +133,20 @@ function Report() {
                 </div>
                 <div className="name">
                     <p className="symptom-text">রক্তের গ্রুপ:</p>
-                    <Input placeholder="রক্তের গ্রুপ:"
+                    <Select className="bloodgroup-select"
+                    placeholder="রক্তের গ্রুপ"
                     onChange={e => setBloodGroup(e.target.value)}
-                    />
+                    width="120px"
+                    >
+                        <option value="AB (+ve)">AB (+ve)</option>
+                        <option value="AB (-ve)">AB (-ve)</option>
+                        <option value="A (+ve)">A (+ve)</option>
+                        <option value="A (-ve)">A (-ve)</option>
+                        <option value="B (+ve)">B (+ve)</option>
+                        <option value="B (-ve)">B (-ve)</option>
+                        <option value="O (+ve)">O (+ve)</option>
+                        <option value="O (-ve)">O (-ve)</option>
+                    </Select>
                 </div>
                 <div className="name">
                     <p className="symptom-text">ফোন নাম্বার:</p>
@@ -178,6 +178,79 @@ function Report() {
                     </RadioGroup>
                 </div>
                 <div className="name">
+                    <p className="symptom-text">জেলা:</p>
+                    <Select className="district-select"
+                    placeholder="জেলা"
+                    onChange={e => setDistrict(e.target.value)}
+                    width="120px"
+                    >
+                        <option>Bagerhat</option>
+                        <option>Bandarban</option>
+                        <option>Barguna </option>
+                        <option>Barisal</option>
+                        <option>Bhola</option>
+                        <option>Bogra</option>
+                        <option>Brahmanbaria</option>
+                        <option>Chandpur</option>
+                        <option>Chapainawabganj</option>
+                        <option>Chittagong</option>
+                        <option>Chuadanga</option>
+                        <option>Comilla</option>
+                        <option>Cox's Bazar</option>
+                        <option>Dhaka</option>
+                        <option>Dinajpur</option>
+                        <option>Faridpur </option>
+                        <option>Feni</option>
+                        <option>Gaibandha</option>
+                        <option>Gazipur</option>
+                        <option>Gopalganj</option>
+                        <option>Habiganj</option>
+                        <option>Jamalpur</option>
+                        <option>Jessor</option>
+                        <option>Jhalokati </option>
+                        <option>Jhenaidah</option>
+                        <option>Joypurhat</option>
+                        <option>Khagrachhari</option>
+                        <option>Khulna</option>
+                        <option>Kishoreganj</option>
+                        <option>Kurigram</option>
+                        <option>Kushtia</option>
+                        <option>Lakshmipur</option>
+                        <option>Lalmonirhat</option>
+                        <option>Madaripur</option>
+                        <option>Magura</option>
+                        <option>Manikganj</option>
+                        <option>Meherpur</option>
+                        <option>Moulvibazar</option>
+                        <option>Munshiganj</option>
+                        <option>Mymensingh</option>
+                        <option>Naogaon</option>
+                        <option>Narai</option>
+                        <option>Narayanganj</option>
+                        <option>Narsingdi</option>
+                        <option>Natore</option>
+                        <option>Netrokona</option>
+                        <option>Nilphamari</option>
+                        <option>Noakhali</option>
+                        <option>Pabna</option>
+                        <option>Panchagarh</option>
+                        <option>Patuakhali</option>
+                        <option>Pirojpur</option>
+                        <option>Rajbari</option>
+                        <option>Rajshahi</option>
+                        <option>Rangamati</option>
+                        <option>Rangpur</option>
+                        <option>Satkhira</option>
+                        <option>Shariatpur</option>
+                        <option>Sherpur</option>
+                        <option>Sirajganj</option>
+                        <option>Sunamganj</option>
+                        <option>Sylhet</option>
+                        <option>Tangail</option>
+                        <option>Thakurgaon</option>
+                    </Select>
+                </div>
+                <div className="name">
                     <p className="symptom-text">বর্তমান ঠিকানা:</p>
                     <Input placeholder="বর্তমান ঠিকানা" isFullWidth="true" onChange={e => setAddress(e.target.value)}/>
                 </div>
@@ -205,38 +278,16 @@ function Report() {
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div className="name">
-                    <p className="symptom-text">পজিটিভ রিপোর্টের ছবি:</p>
-                    <ImageUploader
-                        withIcon={true}
-                        buttonText='পজিটিভ টেস্টের টেক্সট মেসেজের অথবা রিপোর্টের ছবি'
-                        onChange={onPositiveDrop}
-                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                        maxFileSize={5242880}
-                    />
-
-                </div>
-
-                <div className="name">
-                    <p className="symptom-text">নেগেটিভ রিপোর্টের ছবি:</p>
-                    <ImageUploader
-                        withIcon={true}
-                        buttonText='নেগেটিভ টেস্টের টেক্সট মেসেজের অথবা রিপোর্টের ছবি'
-                        onChange={onNegativeDrop}
-                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                        maxFileSize={5242880}
-                    />
-                </div>            
             </div>
             
             <div className="buttons" style={{paddingTop: "20px", paddingBottom: "40px"}}>
                 <div className="submit-button">
-                    <Button
+                    <ToastExample
                         variantColor="yellow"
                         onClick={handleSubmit}
                     >
                         প্রেরণ করুন
-                    </Button>    
+                    </ToastExample>    
                 </div> 
             </div>       
         </div>
