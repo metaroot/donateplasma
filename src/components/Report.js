@@ -123,9 +123,9 @@ function Report() {
             </div>
 
             <div className="info">
-                <FormControl isRequired="true" className="name">
+                <FormControl isRequired className="name">
                     <p className="symptom-text">নাম:</p>
-                    <Input  placeholder="নাম"
+                    <Input area-required placeholder="নাম"
                     onChange={e => setName(e.target.value)}
                     />
                 </FormControl>
